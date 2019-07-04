@@ -26,7 +26,6 @@
                 localStorage.setItem(config.userKey, JSON.stringify(response.data))
                 $window.location.reload() // recarrega a página após o login
                 $http.defaults.headers.common.Authorization = response.data.token
-                $window.location.href = '/'
                 if(callback) callback(null, response.data)
             }).catch(function(response) {
                 if(callback) callback(response.data.errors, null)
