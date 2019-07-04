@@ -37,7 +37,7 @@
             localStorage.removeItem(config.userKey)
             $http.defaults.headers.common.Authorization = ''
             $window.location.reload()
-            location.href = '/'
+            location.href = '/admin'
             if (callback) callback(null)
         }
 
