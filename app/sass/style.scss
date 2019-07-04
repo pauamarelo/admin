@@ -1,0 +1,471 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    div {
+        a[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."] {
+            img {
+                display: none !important;
+            }
+        }
+    }
+}
+
+// Presets
+.mt-15 {margin-top: 15px !important;}
+.mt-30 {margin-top: 30px !important;}
+.mt-50 {margin-top: 50px !important;}
+
+.mb-15 {margin-bottom: 15px !important;}
+.mb-30 {margin-bottom: 30px !important;}
+.mb-50 {margin-bottom: 50px !important;}
+
+.active {
+    a {
+        background-color: rgba(20,20,20,0.4);
+    }
+}
+
+.centraliza {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+
+    label {
+        margin: 0 15px 0 0;
+    }
+
+    .form-control {
+        width: auto;
+    }
+}
+
+table {
+    td {
+        cursor: pointer;
+    }
+}
+
+text-angular {
+    .btn-group {
+        margin-bottom: 7.5px;
+    }
+}
+
+.jumbotron {
+    position: relative;
+    border-radius: 0;
+
+    .img-bg {
+        background: url('../img/bg.png') no-repeat center center;
+        background-size: cover;
+        border-radius: 0;
+        filter: blur(3px);
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    h1 {
+        color: #efefef;
+        text-shadow: 2px 2px 4px #222;
+        position: relative;
+    }
+}
+
+
+// Login
+.login {
+    background: linear-gradient(to bottom right, #333, #444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    z-index: 2000;
+
+    h2 {
+        color: #fff;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-login {
+        background: #fff;
+        padding: 25px 30px;
+        max-width: 400px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px 1px #111;
+
+        .btn {
+            width: 120px;
+        }
+    }
+}
+
+// Header
+#header {
+    a {
+        color: #fafafa;
+
+        &:hover {
+            color: #ccc;
+        }
+    }
+
+    .btn-collapse {
+        padding: 0 15px;
+        font-size: 20px;
+    }
+}
+
+// Sidebar
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 56px;
+    height: 100%;
+    background-color: #2f353a;
+    width: 300px;
+    transition: 0.3s;
+    z-index: 1001 !important;
+    
+    ul {
+        li {
+            line-height: 2.6;
+
+            a {
+                color: #fafafa;
+
+                &:hover {
+                    background-color: rgba(20,20,20,0.4);
+                }
+            }
+
+            &.user {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+
+                &.active {
+                    background-color: rgba(20,20,20,0.4);
+                }
+
+                &:hover {
+                    background-color: rgba(20,20,20,0.4);
+                    cursor: pointer;
+                }
+
+                .box {
+                    overflow: hidden;
+                    
+                    .img-frame {
+                        background-color: rgba(40,40,40,0.4);
+                        border-radius: 100%;
+                        width: 150px;
+                        height: 150px;
+                        transition: 0.3s;
+                        box-shadow: 1px 1px 5px 1px rgba(50,50,50,0.4);
+                        margin: 5px auto 0 auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+
+                        img {
+                            width: 140px;
+                            height: 140px;
+                            transition: 0.3s;
+                        }
+                    }
+
+                    p, a {
+                        color: #fafafa;
+                        font-size: 20px;
+                        text-decoration: none;
+                        background: none;
+                        transition: 0.3s;
+                        margin: 0;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        &:hover {
+                            color: #ccc;
+                            transition: 0.3s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Classe adicionada quando sidebarCollapse() é acionado
+.sidebar-collapse {
+    #sidebar {
+        width: 50px;
+        transition: 0.3s;
+        span,
+        .fa-chevron-left {
+            position: absolute;
+            opacity: 0;
+            transition: 0.1s;
+        }
+
+        ul {
+            li {
+                &.user {
+                    padding: 5px;
+            
+                    .box {
+                        .img-frame {
+                            width: 40px;
+                            height: 40px;
+                            transition: 0.3s;
+            
+                            img {
+                                width: 30px;
+                                height: 30px;
+                                transition: 0.3s;
+                            }
+                        }
+            
+                        p {
+                            display: none;
+                        }
+                    }
+                }
+
+                &.nav-item {
+                    a {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 768px) {
+        .panel-content {
+            width: calc(100% - 50px);
+            left: 50px;
+            transition: 0.3s;
+        }
+    }
+}
+
+
+// Panel Content
+.panel-content {
+    width: calc(100% - 300px);
+    position: absolute;
+    left: 300px;
+    top: 56px;
+    // padding: 15px;
+    transition: 0.3s;
+
+    .page-header {
+        margin: 0;
+        color: #444;
+    }
+
+    .bloco {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 #aaa;
+        padding: 25px;
+    }
+
+    .tabela {
+        thead {
+            tr {
+                th {
+                    cursor: pointer;
+                }
+            }
+        }
+        tbody {
+            td {
+                img {
+                    max-width: 60px;
+                }
+            }
+        }
+    }
+}
+
+
+// TextAngular
+text-angular {
+    .btn-group {
+        flex-wrap: wrap !important;
+        
+        button {
+            &.active {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+        }
+    }
+}
+
+
+// Modal
+.modal {
+    img {
+        width: 250px;
+        display: block;
+        margin: 0 auto 15px auto;
+    }
+}
+
+
+// Página perfil
+.pagina-perfil {
+    padding-bottom: 30px;
+
+    .box {
+        .img-frame {
+            background-color: rgba(40,40,40,0.4);
+            border-radius: 100%;
+            // padding: 5px;
+            width: 200px;
+            height: 200px;
+            transition: 0.3s;
+            box-shadow: 1px 1px 5px 1px rgba(50,50,50,0.4);
+            margin: 5px auto 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                width: 190px;
+                height: 190px;
+                transition: 0.3s;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0,0,0,0.5);
+                cursor: pointer;
+                opacity: 0;
+                transition: 0.3s ease;
+
+                i {
+                    color: #fff;
+                    font-size: 26px;
+                }
+            }
+
+            &:hover {
+                .overlay {
+                    opacity: 1;
+                    transition: 0.3s ease;
+                }
+            }
+
+            input[type=file] {
+                width: 1px;
+                height: 1px;
+                position: absolute;
+                opacity: 0;
+                visibility: 0;
+            }
+        }
+
+        .btn-info {
+            display: block;
+            margin: 15px auto 0 auto;
+        }
+    }
+}
+
+// Página galeria
+.pagina-galeria {
+    h4 {
+        margin: 0 0 20px 0;
+    }
+
+    .box-img {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+
+        img {
+            width: auto;
+            max-width: calc(100% + 50px);
+            height: auto;
+            max-height: calc(100% + 50px);
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            background: rgba(20,20,20,0.6);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+            
+            a {
+                color: #fff;
+                text-decoration: none !important;
+                margin: 0 15px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+
+                &:hover {
+                    color: #dadada;
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        &:hover {
+            .overlay {
+                opacity: 1;
+                transition: 0.3s;
+            }
+        }
+    }
+}

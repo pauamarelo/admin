@@ -1,0 +1,56 @@
+<div class="login">
+    <h2>PAUnel v3.0</h2>
+    <div class="container" ng-if="vm.isLogin">
+        <div class="box-login">
+            <h4 class="text-center mb-15">Faça o login</h4>
+            <form ng-submit="vm.logar(vm.dados)" name="formLogin">
+                <div class="row">
+                    <div class="col-12 mb-15">
+                        <label>Login</label>
+                        <input type="text" class="form-control" ng-model="vm.dados.login" required>
+                    </div>
+                    <div class="col-12 mb-15">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" ng-model="vm.dados.senha" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success float-right">Logar</button>
+                    </div>
+                </div>
+            </form>
+            <h5 class="mt-15">Não é cadastrado?</h5>
+            <p><a ng-click="vm.isLogin = false" href="">Clique aqui</a> e faça seu cadastro.</p>
+        </div>
+    </div>
+
+    <div class="container" ng-if="!vm.isLogin">
+        <div class="box-login">
+            <h4 class="text-center mb-15">Cadastre-se</h4>
+            <form ng-submit="vm.cadastrar(vm.dados)" name="formCadastro">
+                <div class="row">
+                    <div class="col-12 mb-15">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" ng-model="vm.dados.nome" required>
+                    </div>
+                    <div class="col-12 mb-15">
+                        <label>Login</label>
+                        <input type="text" class="form-control" ng-model="vm.dados.login" required>
+                    </div>
+                    <div class="col-12 mb-15">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" ng-model="vm.dados.senha" required>
+                    </div>
+                    <div class="col-12 mb-15">
+                        <label>Confirmar senha</label>
+                        <input type="password" class="form-control" ng-model="vm.dados.confirmarSenha" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success float-right">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+            <h5 class="mt-15">Já é cadastrado?</h5>
+            <p><a ng-click="vm.isLogin = true" href="">Clique aqui</a> e faça seu login.</p>
+        </div>
+    </div>
+</div>

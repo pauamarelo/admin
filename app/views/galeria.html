@@ -1,0 +1,71 @@
+<div class="panel-content pagina-galeria" ng-style="{'background': user.styles.background}">
+    <div class="sidebar-backdrop" ng-class="{'backdrop-active': !sidebarCollapsed}" ng-click="sidebarCollapse()"></div>
+    <div class="jumbotron">
+        <div class="img-bg"></div>
+        <h1 class="text-center">Galeria</h1>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 form-inline">
+                <label>Integrante</label>
+                <select class="form-control" ng-model="vm.IntegranteFilter" ng-change="vm.scrollTop()">
+                    <option selected value="">Todos</option>
+                    <option ng-repeat="x in vm.integrantes">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-success btn-block-xs" ng-click="vm.openAdd()"><i class="fas fa-plus"></i> Adicionar</button>
+            </div>
+            <div class="col-12">
+                <div class="bloco">
+                    <h4>
+                        {{vm.galleryFiltered.length}}
+                        <span ng-if="vm.galleryFiltered.length !== 1">fotos</span>
+                        <span ng-if="vm.galleryFiltered.length === 1">foto</span>
+                        de
+                        <span ng-if="!vm.IntegranteFilter">Todos</span>
+                        <span ng-if="vm.IntegranteFilter">{{vm.IntegranteFilter}}</span>
+                    </h4>
+                    <div class="alert alert-info" ng-if="!vm.galeria.length">
+                        <i class="fas fa-info-circle"></i> Nenhum registro encontrado
+                    </div>
+                    <div class="content centraliza" ng-if="vm.isLoading">
+                        <div class="spinner-grow" style="width: 3rem; height: 3rem;"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-30" dir-paginate="x in vm.galleryFiltered = (vm.galeria | filter:{'integrante': vm.IntegranteFilter}) | itemsPerPage: vm.pageSize" pagination-id="galeria" current-page="vm.pagination.current">
+                            <div class="box-img mb-15">
+                                <img ng-src="{{x.foto}}">
+                                <div class="overlay">
+                                    <a ng-click="vm.detalhes(x)"><i class="fas fa-eye"></i></a>
+                                    <a ng-click="vm.openEdit(x)"><i class="fas fa-edit"></i></a>
+                                    <a ng-click="vm.delete(x)"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                            <p class="text-center">{{x.legenda}}</p>
+                        </div>
+                        <div class="col-12">
+                            <dir-pagination-controls
+                                max-size="5"
+                                pagination-id="galeria"
+                                template-url="views/includes/customPagination.html"
+                                on-page-change="vm.scrollTop()">
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal add -->
+<div ng-include="'views/modals/galeria/modalAdd.html'"></div>
+<!-- Modal edit -->
+<div ng-include="'views/modals/galeria/modalEdit.html'"></div>
+<!-- Modal detalhes -->
+<div ng-include="'views/modals/galeria/modalDetalhes.html'"></div>
