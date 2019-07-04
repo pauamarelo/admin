@@ -10,6 +10,7 @@
         vm.img = {}
         vm.isLoading = false
         vm.imgIsLoading = false
+        vm.isPostLoading = false
 
         // Listar integrantes
         function listarIntegrantes() {
@@ -53,6 +54,7 @@
         }
         // POST
         vm.adicionar = function(d) {
+            vm.isPostLoading = true
             if(!d.imagem) {
                 vm.imagem = ''
             } else {
@@ -72,8 +74,10 @@
                     toaster.success('Sucesso!', response.data.msg)
                     listar()
                     $('#modalAdd').modal('hide')
+                    vm.isPostLoading = false
                 } else {
                     toaster.error('Erro', 'Houve um erro.')
+                    vm.isPostLoading = false
                 }
             })
         }
@@ -87,6 +91,7 @@
         }
         // PUT
         vm.editar = function(d) {
+            vm.isPostLoading = true
             if(!d.imagem) {
                 vm.imagem = d.img
             } else {
@@ -106,8 +111,10 @@
                     toaster.success('Sucesso!', response.data.msg)
                     listar()
                     $('#modalEdit').modal('hide')
+                    vm.isPostLoading = false
                 } else {
                     toaster.error('Erro', 'Houve um erro.')
+                    vm.isPostLoading = false
                 }
             })
         }
