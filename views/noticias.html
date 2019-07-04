@@ -59,7 +59,7 @@
                                         </td>
                                         <td style="width: 160px;">
                                             <button class="btn btn-sm btn-primary" ng-click="vm.openEdit(x)" ng-disabled="x.autor !== vm.fullName">Editar</button>
-                                            <button class="btn btn-sm btn-danger" ng-click="vm.delete(x)">Excluir</button>
+                                            <button class="btn btn-sm btn-danger" ng-click="vm.delete(x)" ng-disabled="x.autor !== vm.fullName">Excluir</button>
                                         </td>
                                     </tr>
                                 </tbody>
