@@ -53,7 +53,7 @@
                                         <td><a href="http://clanpauamarelo.com/noticia/{{x.url}}" target="_blank">{{x.url}}</a></td>
                                         <td ng-click="vm.detalhes(x)">{{x.createdAt | date: 'dd/MM/yyyy'}}</td>
                                         <td>
-                                            <button class="btn btn-light btn-sm" ng-click="vm.ativo(x)">
+                                            <button class="btn btn-light btn-sm" ng-click="vm.ativo(x)" ng-disabled="x.autor === vm.fullName ? false : true">
                                                 <i class="fas" ng-class="{'fa-toggle-on': x.ativo, 'fa-toggle-off': !x.ativo}"></i>
                                             </button>
                                         </td>
