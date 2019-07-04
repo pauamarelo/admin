@@ -29,7 +29,13 @@
                         <div class="col-12 col-md-6 mb-15">
                             <label>Integrante</label>
                             <select class="form-control" ng-model="vm.dados.integrante" required>
-                                <option ng-repeat="x in vm.integrantes">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>
+                                <optgroup label="Integrantes">
+                                    <option ng-repeat="x in vm.integrantes">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>
+                                </optgroup>
+                                <optgroup label="Ex-integrantes">
+                                    <option>Nathã "biureN" Fioravanço</option>
+                                    <option>Rafael "rz4o" Navas</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
