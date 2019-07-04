@@ -3,23 +3,25 @@
 
     const app = angular.module('myApp')
 
-    app.controller('noticiasCtrl', function($scope, $http, config, toaster) {
+    app.controller('noticiasCtrl', function($scope, $http, config, toaster, auth) {
         const vm = this
+        const user = auth.getUser()
 
         vm.dados = {}
         vm.img = {}
         vm.isLoading = false
         vm.imgIsLoading = false
         vm.isPostLoading = false
+        vm.fullName = `${user.nome} "${user.login}" ${user.sobrenome}`
 
         // Listar integrantes
-        function listarIntegrantes() {
-            $http.get(config.listarIntegrantes)
+        function listarAdmins() {
+            $http.get(config.listarAdmins)
             .then((response) => {
-                vm.integrantes = response.data.data
+                vm.admins = response.data.data
             })
         }
-        listarIntegrantes()
+        listarAdmins()
 
         // Paginate options
         vm.orderByField = '-createdAt'
