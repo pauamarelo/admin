@@ -58,8 +58,8 @@
                                             </button>
                                         </td>
                                         <td style="width: 160px;">
-                                            <button class="btn btn-sm btn-primary" ng-click="vm.openEdit(x)" ng-disabled="x.autor === vm.fullName ? true : false">Editar</button>
-                                            <button class="btn btn-sm btn-danger" ng-click="vm.delete(x)" ng-disabled="x.autor === vm.fullName ? true : false">Excluir</button>
+                                            <button class="btn btn-sm btn-primary" ng-click="vm.openEdit(x)" ng-disabled="x.autor === vm.fullName ? false : true">Editar</button>
+                                            <button class="btn btn-sm btn-danger" ng-click="vm.delete(x)" ng-disabled="x.autor === vm.fullName ? false : true">Excluir</button>
                                         </td>
                                     </tr>
                                 </tbody>
