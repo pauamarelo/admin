@@ -4,7 +4,6 @@
     const app = angular.module('myApp')
 
     app.controller('noticiasCtrl', function($scope, $http, config, toaster, auth) {
-        validateUser()
         const vm = this
         const user = auth.getUser()
 
@@ -14,23 +13,6 @@
         vm.imgIsLoading = false
         vm.isPostLoading = false
         vm.fullName = `${user.nome} "${user.login}" ${user.sobrenome}`
-
-        // Validação do token
-        function validateUser() {
-            const user = auth.getUser()
-
-            if (!user) {
-                console.log('Usuário inválido')
-            } else if (user && !user.isValid) {
-                auth.validateToken(user.token, (err, valid) => {
-                    if (!valid) {
-                        console.log('Token inválido')
-                    } else {
-                        listarAdmins()
-                    }
-                })
-            }
-        }
 
         // Listar admins
         function listarAdmins() {
@@ -70,6 +52,7 @@
         vm.openAdd = function() {
             vm.dados = {}
             $('#modalAdd').modal('show')
+            listarAdmins()
         }
         // POST
         vm.adicionar = function(d) {
@@ -107,6 +90,7 @@
             vm.dados = d
             vm.img = {}
             $('#modalEdit').modal('show')
+            listarAdmins()
         }
         // PUT
         vm.editar = function(d) {
