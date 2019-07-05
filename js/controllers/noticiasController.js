@@ -7,6 +7,24 @@
         const vm = this
         const user = auth.getUser()
 
+        // REGEX
+        function regx(val) {
+            val = val.replace(/[áàãâä]/g, 'a')
+            val = val.replace(/[ÁÀÃÂÄ]/g, 'a')
+            val = val.replace(/[éèêë]/g, 'e')
+            val = val.replace(/[ÉÈÊË]/g, 'e')
+            val = val.replace(/[íìîï]/g, 'i')
+            val = val.replace(/[ÍÌÎÏ]/g, 'i')
+            val = val.replace(/[óòõôö]/g, 'o')
+            val = val.replace(/[ÓÒÕÔÖ]/g, 'o')
+            val = val.replace(/[úùûü]/g, 'u')
+            val = val.replace(/[ÚÙÛÜ]/g, 'u')
+            val = val.replace(/[ç]/g, 'c')
+            val = val.replace(/[Ç]/g, 'c')
+            val = val.replace(/\W+/g, '-')
+            return val.toLowerCase()
+        }
+
         vm.dados = {}
         vm.img = {}
         vm.isLoading = false
@@ -66,7 +84,8 @@
                 titulo: d.titulo,
                 conteudo: d.conteudo,
                 autor: d.autor,
-                url: d.titulo.replace(/\W+/g, '-').toLowerCase(),
+                // url: d.titulo.replace(/\W+/g, '-').toLowerCase(),
+                url: regx(d.titulo),
                 img: vm.imagem,
                 ativo: d.ativo
             }
@@ -104,7 +123,8 @@
                 titulo: d.titulo,
                 conteudo: d.conteudo,
                 autor: d.autor,
-                url: d.titulo.replace(/\W+/g, '-').toLowerCase(),
+                // url: d.titulo.replace(/\W+/g, '-').toLowerCase(),
+                url: regx(d.titulo),
                 img: vm.imagem,
                 ativo: d.ativo
             }
