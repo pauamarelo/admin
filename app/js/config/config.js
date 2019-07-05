@@ -14,12 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/noticias',
             templateUrl: 'views/noticias.html',
             controller: 'noticiasCtrl',
-            controllerAs: 'vm',
-            resolve: {
-                loadMyFactory: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load('js/factories/authFactory.js')
-                }]
-            }
+            controllerAs: 'vm'
         })
         .state('perfil', {
             url: '/perfil',

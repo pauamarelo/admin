@@ -16,7 +16,7 @@
 
         // Listar integrantes
         function listarAdmins() {
-            $http.get(config.admins)
+            $http.get(config.listarAdmins)
             .then((response) => {
                 vm.admins = response.data.data
             })
