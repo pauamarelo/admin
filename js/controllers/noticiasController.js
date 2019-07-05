@@ -4,6 +4,7 @@
     const app = angular.module('myApp')
 
     app.controller('noticiasCtrl', function($scope, $http, config, toaster, auth) {
+        validateUser()
         const vm = this
         const user = auth.getUser()
 
@@ -14,14 +15,30 @@
         vm.isPostLoading = false
         vm.fullName = `${user.nome} "${user.login}" ${user.sobrenome}`
 
-        // Listar integrantes
+        // Validação do token
+        function validateUser() {
+            const user = auth.getUser()
+
+            if (!user) {
+                console.log('Usuário inválido')
+            } else if (user && !user.isValid) {
+                auth.validateToken(user.token, (err, valid) => {
+                    if (!valid) {
+                        console.log('Token inválido')
+                    } else {
+                        listarAdmins()
+                    }
+                })
+            }
+        }
+
+        // Listar admins
         function listarAdmins() {
-            $http.get(config.listarAdmins)
+            $http.get(config.admins)
             .then((response) => {
                 vm.admins = response.data.data
             })
         }
-        listarAdmins()
 
         // Paginate options
         vm.orderByField = '-createdAt'
