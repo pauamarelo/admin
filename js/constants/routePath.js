@@ -14,7 +14,6 @@
         login: oapi+'login',
         signup: oapi+'signup',
         validateToken: oapi+'validateToken',
-        listarAdmins: oapi+'admins',
         admins: api+'admins',
         adminSenha: api+'adminSenha',
         listarIntegrantes: oapi+'integrantes',
