@@ -1,0 +1,18 @@
+<div class="modal fade" id="modalDetalhes" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-center">{{vm.dados.titulo}}</h2>
+                <img ng-if="vm.dados.img" ng-src="{{vm.dados.img}}" style="max-width: 450px; margin: 15px auto; display: block;">
+                <div ng-bind-html="vm.dados.conteudo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

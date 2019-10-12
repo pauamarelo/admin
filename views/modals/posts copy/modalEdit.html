@@ -1,0 +1,51 @@
+<div class="modal fade" id="modalEdit" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Editar</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form ng-submit="vm.editar(vm.dados)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-15">
+                            <label>Capa</label>
+                            <input type="file" name="imagem" class="form-control mb-15" file-model="vm.dados.imagem">
+                            <button type="button" class="btn btn-info" ng-click="vm.upload(vm.dados.imagem)" ng-disabled="vm.imgIsLoading || !vm.dados.imagem">
+                                <span ng-if="!vm.imgIsLoading"><i class="fas fa-cloud-upload-alt"></i> Upload</span>
+                                <span ng-if="vm.imgIsLoading"><div class="spinner-border spinner-border-sm"></div></span>
+                            </button>
+                        </div>
+                        <div class="col-12 mb-15" ng-if="vm.dados.img && !vm.img.status">
+                            <img ng-src="{{vm.dados.img}}" class="img-fluid">
+                        </div>
+                        <div class="col-12 mb-15" ng-if="vm.img.status">
+                            <img ng-src="{{vm.img.data.filePath}}" class="img-fluid">
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Título</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.titulo" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Autor</label>
+                            <select class="form-control" ng-model="vm.dados.autor" required>
+                                <option ng-repeat="x in vm.admins">{{x.nome}} "{{x.login}}" {{x.sobrenome}}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-15">
+                            <label>Conteúdo</label>
+                            <text-angular ng-model="vm.dados.conteudo"></text-angular>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" ng-disabled="vm.isPostLoading">
+                        <span ng-if="!vm.isPostLoading">Salvar</span>
+                        <span ng-if="vm.isPostLoading"><div class="spinner-border spinner-border-sm"></div></span>
+                    </button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

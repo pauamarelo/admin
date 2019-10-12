@@ -1,0 +1,62 @@
+<div class="modal fade" id="modalPlayers" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Players de 
+                    <span ng-if="vm.clan === 'home'">{{vm.dados.clan_home.name}}</span>
+                    <span ng-if="vm.clan === 'away'">{{vm.dados.clan_away.name}}</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form ng-submit="vm.editar(vm.dados)">
+                <div class="modal-body">
+                    <div class="row" ng-repeat="x in [0,1,2,3,4]">
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Player</label>
+                            <div ng-if="vm.clan === 'home'">
+                                <input type="text" class="form-control" ng-model="vm.dados.clan_home.players[$index].player" required>
+                            </div>
+                            <div ng-if="vm.clan === 'away'">
+                                <input type="text" class="form-control" ng-model="vm.dados.clan_away.players[$index].player" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 mb-15">
+                            <label>Kills</label>
+                            <div ng-if="vm.clan === 'home'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_home.players[$index].kills" required>
+                            </div>
+                            <div ng-if="vm.clan === 'away'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_away.players[$index].kills" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 mb-15">
+                            <label>Deaths</label>
+                            <div ng-if="vm.clan === 'home'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_home.players[$index].deaths" required>
+                            </div>
+                            <div ng-if="vm.clan === 'away'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_away.players[$index].deaths" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 mb-15">
+                            <label>Assists</label>
+                            <div ng-if="vm.clan === 'home'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_home.players[$index].assists" required>
+                            </div>
+                            <div ng-if="vm.clan === 'away'">
+                                <input type="number" class="form-control" ng-model="vm.dados.clan_away.players[$index].assists" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" ng-disabled="vm.isPostLoading">
+                        <span ng-if="!vm.isPostLoading">Salvar</span>
+                        <span ng-if="vm.isPostLoading"><div class="spinner-border spinner-border-sm"></div></span>
+                    </button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

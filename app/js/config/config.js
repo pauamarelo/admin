@@ -39,6 +39,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'galeriaCtrl',
             controllerAs: 'vm'
         })
+        .state('partidas', {
+            url: '/partidas',
+            templateUrl: 'views/partidas.html',
+            controller: 'partidasCtrl',
+            controllerAs: 'vm'
+        })
 
     $locationProvider.html5Mode(true)
 })
