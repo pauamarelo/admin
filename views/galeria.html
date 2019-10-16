@@ -11,9 +11,12 @@
                 <label>Integrante</label>
                 <select class="form-control" ng-model="vm.IntegranteFilter" ng-change="vm.scrollTop()">
                     <option selected value="">Todos</option>
-                    <option ng-repeat="x in vm.integrantes">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>
-                    <option>Nathã "buteN" Fioravanço</option>
-                    <option>Rafael "rz4o" Navas</option>
+                    <optgroup label="Integrantes">
+                        <option ng-repeat="x in vm.integrantes | filter:{'exIntegrante': false}">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>
+                    </optgroup>
+                    <optgroup label="Ex-interantes">
+                        <option ng-repeat="x in vm.integrantes | filter:{'exIntegrante': true}">{{x.nome}} "{{x.nick}}" {{x.sobrenome}}</option>                        
+                    </optgroup>
                 </select>
             </div>
             <div class="col-12">
