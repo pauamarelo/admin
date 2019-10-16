@@ -107,7 +107,8 @@
                 curiosidades: d.curiosidades,
                 steam: d.steam,
                 foto: vm.imagem,
-                ativo: d.ativo
+                ativo: d.ativo,
+                exIntegrante: d.exIntegrante
             }
             $http.put(`${config.integrantes}/${d._id}`, objData)
             .then(function(response) {
@@ -131,6 +132,16 @@
                 post.ativo = 1
             }
             vm.editar(post)
+        }
+
+        // Ex-integrante
+        vm.ex = function(player) {
+            console.log(player)
+            if(player.exIntegrante) {
+                player.exIntegrante = 0
+            } else {
+                player.exIntegrante = 1
+            }
         }
 
 

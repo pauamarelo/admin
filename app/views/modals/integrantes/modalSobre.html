@@ -8,19 +8,29 @@
             <form ng-submit="vm.editar(vm.dados)">
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12">
+                            <label>Ex-integrante?</label>
+                            <button type="button" class="btn btn-light btn-sm" ng-click="vm.ex(vm.dados)">
+                                <i class="fas" ng-class="{'fa-toggle-on': vm.dados.exIntegrante, 'fa-toggle-off': !vm.dados.exIntegrante}"></i>
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <hr>
+                        </div>
                         <div class="col-12 col-md-6 mb-15">
                             <label>Função</label>
-                            <select class="form-control" ng-model="vm.dados.sobre.funcao" required>
+                            <select class="form-control" ng-model="vm.dados.sobre.funcao">
                                 <option>Playmaker</option>
                                 <option>Entry Fragger</option>
                                 <option>Awper</option>
                                 <option>Lurker</option>
                                 <option>Coach</option>
+                                <option>Rager</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6 mb-15">
+                        <div class="col-12 col-md-6 mb-15" ng-if="!vm.dados.exIntegrante">
                             <label>Mapa</label>
-                            <select class="form-control" ng-model="vm.dados.sobre.mapa" required>
+                            <select class="form-control" ng-model="vm.dados.sobre.mapa">
                                 <option>Inferno</option>
                                 <option>Mirage</option>
                                 <option>Overpass</option>
@@ -30,9 +40,13 @@
                                 <option>Nuke</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6 mb-15">
+                        <div class="col-12 col-md-6 mb-15" ng-if="vm.dados.exIntegrante">
+                            <label>Motivo</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.sobre.motivo">
+                        </div>
+                        <div class="col-12 col-md-6 mb-15" ng-if="!vm.dados.exIntegrante">
                             <label>Armas</label>
-                            <select multiple class="form-control" ng-model="vm.dados.sobre.armas" required>
+                            <select multiple class="form-control" ng-model="vm.dados.sobre.armas">
                                 <option>AK-47</option>
                                 <option>M4A4</option>
                                 <option>M4A1-S</option>
@@ -46,13 +60,25 @@
                                 <option>P90</option>
                             </select>
                         </div>
+                        <div class="col-12 col-md-6 mb-15" ng-if="vm.dados.exIntegrante">
+                            <label>Clan atual</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.sobre.clan">
+                        </div>
                         <div class="col-12 col-md-6 mb-15">
                             <label>Amigão</label>
                             <input type="text" class="form-control" ng-model="vm.dados.sobre.amigao" required>
                         </div>
-                        <div class="col-12 col-md-8 mb-15">
+                        <div class="col-12 col-md-8 mb-15" ng-if="!vm.dados.exIntegrante">
                             <label>Características</label>
-                            <input type="text" class="form-control" ng-model="vm.dados.sobre.caracteristicas" ng-list required>
+                            <input type="text" class="form-control" ng-model="vm.dados.sobre.caracteristicas" ng-list>
+                        </div>
+                        <div class="col-12 col-md-4 mb-15" ng-if="vm.dados.exIntegrante">
+                            <label>Atuação</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.sobre.atuacao">
+                        </div>
+                        <div class="col-12 col-md-4 mb-15" ng-if="vm.dados.exIntegrante">
+                            <label>Contribuição</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.sobre.contribuicao">
                         </div>
                         <div class="col-12 col-md-4 mb-15">
                             <label>Patente</label>
