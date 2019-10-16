@@ -95,7 +95,11 @@
                     amigao: d.sobre.amigao,
                     caracteristicas: d.sobre.caracteristicas,
                     carreira: d.sobre.carreira,
-                    patente: d.sobre.patente
+                    patente: d.sobre.patente,
+                    motivo: d.sobre.motivo,
+                    clan: d.sobre.clan,
+                    atuacao: d.sobre.atuacao,
+                    contribuicao: d.sobre.contribuicao
                 },
                 config: {
                     mouse: d.config.mouse,
